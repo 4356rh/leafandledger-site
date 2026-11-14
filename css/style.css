@@ -315,3 +315,38 @@ p { margin: 0 0 1em; }
   .post-pager { grid-template-columns: 1fr; }
   .post-pager .next { grid-column: 1; }
 }
+
+/* ---------- Blog archive refinements ---------- */
+/* Thumbnail fills the full height of its card (no white strip under it) */
+.post-card .thumb { aspect-ratio: auto; min-height: 285px; height: 100%; position: relative; }
+.post-card .thumb img { position: absolute; inset: 0; }
+/* Chart covers are shown whole on white rather than cropped */
+.post-card .thumb.fit { background: #fff; border-right: 1px solid var(--line); }
+.post-card .thumb.fit img, .recent-grid a.fit img { object-fit: contain; padding: 12px; background: #fff; }
+.recent-grid a.fit img { border-bottom: 1px solid var(--line); }
+/* Recent posts line up with the article column */
+.recent { max-width: 760px; margin-left: auto; margin-right: auto; }
+.recent-grid { gap: 16px; }
+.recent-grid span { font-size: 16px; }
+
+/* Category row: one centred line on wide screens, a sideways-scrolling line below that */
+@media (min-width: 1240px) {
+  .cats .wrap { max-width: 1248px; }
+  .cats ul { flex-wrap: nowrap; justify-content: center; gap: 24px; }
+}
+@media (min-width: 901px) and (max-width: 1239px) {
+  .cats .wrap { padding: 0; }
+  .cats ul { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; gap: 24px; padding: 18px 24px; scrollbar-width: none;
+             -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 40px), transparent); }
+  .cats ul::-webkit-scrollbar { display: none; }
+  .cats li { flex: none; }
+  .cats li:last-child { padding-right: 32px; }
+}
+
+@media (max-width: 900px) {
+  .post-card .thumb { aspect-ratio: 16 / 9; min-height: 0; height: auto; }
+  .post-card .thumb.fit { border-right: 0; border-bottom: 1px solid var(--line); }
+  /* Shorter cards on phones: summary limited to four lines (full text is in the post) */
+  .post-card .excerpt { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
+  .recent { max-width: none; }
+}
