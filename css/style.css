@@ -258,3 +258,16 @@ p { margin: 0 0 1em; }
 .fnback { text-decoration: none; margin-left: .3em; }
 .prose figure a { display: block; }
 .prose li > figure { margin: 1em 0; }
+
+/* About page: the circuit tree grows upward as the section scrolls into view (CSS only, no script).
+   Browsers without scroll-driven animations, and visitors who prefer reduced motion, see the full tree. */
+@keyframes tree-grow { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .about-main .tree {
+      animation: tree-grow ease-in-out both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
