@@ -18,7 +18,7 @@
 <link rel="alternate" type="application/rss+xml" title="The Ledger | Leaf &amp; Ledger" href="blog-feed.xml">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="top">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
@@ -29,8 +29,8 @@
 
 <main id="main">
 <section class="hero hero-home">
-<video class="hero-media hero-video" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4"></video>
-  <img class="hero-media hero-poster" src="img/hero-poster.jpg" alt="" width="1920" height="814">
+<picture><source media="(max-aspect-ratio: 1/1)" srcset="img/hero-poster-portrait.jpg"><img class="hero-media hero-still" src="img/hero-poster.jpg" alt="" width="1920" height="814"></picture>
+  <video class="hero-media hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4" media="(min-aspect-ratio: 1/1)"><source src="media/hero-portrait.mp4" type="video/mp4"></video>
   <div class="hero-text wrap">
     <h1><span>Aging assets are repricing.</span><span>Engineers can solve.</span><span>Managers can act.</span><span class="gap">Investors can now model.</span></h1>
   </div>
